@@ -1,5 +1,5 @@
 const input =
-`+----+
+    `+----+
 |. . |
 |. . |
 | .T.|
@@ -7,7 +7,7 @@ const input =
 |   .|
 +----+`
 const expectedOutput =
-`+----+
+    `+----+
 |    |
 |  : |
 |  T |
@@ -39,14 +39,14 @@ const parseMap = (lineList) => {
 const iterate = (grid) => {
     for (let y = grid.length - 2; y >= 1; y--) {
         for (let x = grid[y].length - 2; x >= 1; x--) {
-            const below = grid[y+1][x]
+            const below = grid[y + 1][x]
             const current = grid[y][x]
             if (current === ROCK) {
                 if (below === SPACE) {
-                    grid[y+1][x] = current;
+                    grid[y + 1][x] = current;
                     grid[y][x] = SPACE
                 } else if (below === ROCK) {
-                    grid[y+1][x] = STACK;
+                    grid[y + 1][x] = STACK;
                     grid[y][x] = SPACE
                 }
             }
@@ -57,26 +57,25 @@ const iterate = (grid) => {
 
 const gridToString = (grid) => {
     let output = [];
-    for( let i = 0; i < grid.length; i ++) {
+    for (let i = 0; i < grid.length; i++) {
         const row = grid[i];
         output.push(row.join(''))
     }
     return output.join('\n');
 }
 
-const display = (stringToPrint) => {
-    setTimeout(() => {
-        console.log(stringToPrint);
-        TARGET.innerHTML = stringToPrint;
-    }, 1500);
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
-const run = (grid) => {
+const run = async (grid) => {
     console.log(gridToString(grid));
     TARGET.innerHTML = gridToString(grid);
-    while(gridToString(grid) !== expectedOutput ) {
+    while (gridToString(grid) !== expectedOutput) {
         const stringToPrint = gridToString(iterate(grid))
-        display(stringToPrint);
+        await sleep(250);
+        console.log(stringToPrint);
+        TARGET.innerHTML = stringToPrint;
     }
 }
 
