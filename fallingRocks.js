@@ -64,27 +64,14 @@ const gridToString = (grid) => {
 }
 
 const run = (grid) => {
-    // let steps = 0;
-    const target = document.getElementById('target1')
+    let steps = 0;
     console.log(gridToString(grid));
-    target.innerHTML = gridToString(grid);
     while(gridToString(grid) !== expectedOutput ) {
         const stringToPrint = gridToString(iterate(grid))
         console.log(stringToPrint);
-        window.setTimeout(()=>{
-            debugger;
-            target.innerHTML = stringToPrint;
-        }, 1500)
-        // steps++
+        steps++
     }
 }
 
-const execute = () => {
-    const grid = parseMap(lineList);
-    run(grid);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    const target = document.getElementById('target1');
-    target.innerHTML = input;
-})
+const grid = parseMap(lineList);
+run(grid);
