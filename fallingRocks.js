@@ -18,6 +18,7 @@ const expectedOutput =
 const ROCK = "."
 const STACK = ":"
 const SPACE = " "
+const TARGET = document.getElementById("target1");
 
 const lineList = input.split("\n")
 
@@ -64,14 +65,23 @@ const gridToString = (grid) => {
 }
 
 const run = (grid) => {
-    let steps = 0;
     console.log(gridToString(grid));
+    TARGET.innerHTML = gridToString(grid);
     while(gridToString(grid) !== expectedOutput ) {
         const stringToPrint = gridToString(iterate(grid))
         console.log(stringToPrint);
-        steps++
+        TARGET.innerHTML = stringToPrint;
     }
 }
 
-const grid = parseMap(lineList);
-run(grid);
+const resetInput = () => {
+    TARGET.innerHTML = input;
+}
+const execute = () => {
+    const grid = parseMap(lineList);
+    run(grid);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    TARGET.innerHTML = input;
+})
