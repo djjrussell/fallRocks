@@ -1,5 +1,5 @@
 const input =
-    `+----+
+`+----+
 |. . |
 |. . |
 | .T.|
@@ -7,7 +7,7 @@ const input =
 |   .|
 +----+`
 const expectedOutput =
-    `+----+
+`+----+
 |    |
 |  : |
 |  T |
