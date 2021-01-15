@@ -64,13 +64,19 @@ const gridToString = (grid) => {
     return output.join('\n');
 }
 
+const display = (stringToPrint) => {
+    setTimeout(() => {
+        console.log(stringToPrint);
+        TARGET.innerHTML = stringToPrint;
+    }, 1500);
+}
+
 const run = (grid) => {
     console.log(gridToString(grid));
     TARGET.innerHTML = gridToString(grid);
     while(gridToString(grid) !== expectedOutput ) {
         const stringToPrint = gridToString(iterate(grid))
-        console.log(stringToPrint);
-        TARGET.innerHTML = stringToPrint;
+        display(stringToPrint);
     }
 }
 
