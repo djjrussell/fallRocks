@@ -73,7 +73,7 @@ const run = async (grid) => {
     TARGET.innerHTML = gridToString(grid);
     while (gridToString(grid) !== expectedOutput) {
         const stringToPrint = gridToString(iterate(grid))
-        await sleep(250);
+        await sleep(750);
         console.log(stringToPrint);
         TARGET.innerHTML = stringToPrint;
     }
