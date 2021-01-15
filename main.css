@@ -1,0 +1,25 @@
+body {
+    background-color: black;
+    color: lawngreen;
+}
+
+#main {
+    text-align: center;
+}
+#target1 {
+    font-size: 30px;
+    margin: 5em auto 0 auto;
+}
+button {
+    margin: auto;
+    width: 10%;
+    border: none;
+    padding: 10px;
+    border-radius: 25px 25px 25px 25px;
+    color: black;
+    background-color: lawngreen;
+}
+
+button:hover {
+    cursor: pointer;
+}
